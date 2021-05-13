@@ -21,7 +21,7 @@ INSERT INTO scientific_data.SAMPLE_PREP_PROTOCOLS VALUES
     (1, 4, '127.0.0.1:4001');
 
 INSERT INTO scientific_data.SAMPLES VALUES
-    (1, 3, 1, 4, 2022-05-13, 2023-05-13, 'Brain Tissue', -60, 'Freezer B');
+    (1, 3, 1, 4, 2022-05-13::DATE, 2023-05-13::DATE, 'Brain Tissue', -60, 'Freezer B');
 
 INSERT INTO scientific_data.LIGHTSHEET_SCANS VALUES
     (1, 1, 1, 2, 'TEST SCAN 1', '127.0.0.1:4003/C:\scans\TEST SCAN 1', 90000000, 500, 4000,
