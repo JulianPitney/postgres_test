@@ -8,8 +8,8 @@ INSERT INTO scientific_data.RESEARCHERS VALUES
 
 
 INSERT INTO scientific_data.ANIMALS VALUES
-    (1, null, null, {3}, 1, 2021-05-13, null, 'Mountain Dew'),
-    (2, null, null, {3}, 1, 2021-05-13, null, 'Orange Crush'),
+    (1, null, null, {3, 3}, 1, 2021-05-13, null, 'Mountain Dew'),
+    (2, null, null, {3, 3}, 1, 2021-05-13, null, 'Orange Crush'),
     (3, 1, 2, null, 1, 2022-05-13, null, 'Vanilla Coke');
 
 
