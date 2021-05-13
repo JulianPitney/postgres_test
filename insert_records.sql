@@ -2,14 +2,14 @@ INSERT INTO scientific_data.RESEARCHERS VALUES
     (1, 'Julian', 'Pitney', '905-431-0992', 'julianpitney@gmail.com'),
     (2, 'Jack', 'Wang', '613-301-8833', 'jwang@uottawa.ca'),
     (3, 'Junzheng', 'Wu', '613-435-5378', 'alchemistwu@gmail.com'),
-    (4, 'Julia' 'Cappelli', '613-355-3857', 'jcap@uottawa.ca'),
+    (4, 'Julia', 'Cappelli', '613-355-3857', 'jcap@uottawa.ca'),
     (5, 'Richard', 'Bergeron', '613-353-5753', 'rbergergon@icloud.ca'),
     (6, 'Thinh', 'Tri', '613-546-3563', 'tnguy@uottawa.ca');
 
 
 INSERT INTO scientific_data.ANIMALS VALUES
-    (1, null, null, [3], 1, 2021-05-13, null, 'Mountain Dew'),
-    (2, null, null, [3], 1, 2021-05-13, null, 'Orange Crush'),
+    (1, null, null, {3}, 1, 2021-05-13, null, 'Mountain Dew'),
+    (2, null, null, {3}, 1, 2021-05-13, null, 'Orange Crush'),
     (3, 1, 2, null, 1, 2022-05-13, null, 'Vanilla Coke');
 
 
