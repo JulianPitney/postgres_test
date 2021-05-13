@@ -3,7 +3,7 @@
 BEGIN;
 
 
-CREATE TABLE scientific_data."LIGHTSHEET_SCANS"
+CREATE TABLE scientific_data."lightsheet_scans"
 (
     "LIGHTSHEET_SCAN_ID" bigint NOT NULL,
     "LIGHTSHEET_CONFIG_ID" bigint NOT NULL,
@@ -27,10 +27,10 @@ CREATE TABLE scientific_data."LIGHTSHEET_SCANS"
     PRIMARY KEY ("LIGHTSHEET_SCAN_ID")
 );
 
-COMMENT ON TABLE scientific_data."LIGHTSHEET_SCANS"
+COMMENT ON TABLE scientific_data."lightsheet_scans"
     IS 'Contains lightsheet scan objects.';
 
-CREATE TABLE scientific_data."LIGHTSHEET_CONFIGS"
+CREATE TABLE scientific_data."lightsheet_configs"
 (
     "LIGHTSHEET_CONFIG_ID" bigint NOT NULL,
     "RESEARCHER_ID" bigint NOT NULL,
@@ -48,10 +48,10 @@ CREATE TABLE scientific_data."LIGHTSHEET_CONFIGS"
     PRIMARY KEY ("LIGHTSHEET_CONFIG_ID")
 );
 
-COMMENT ON TABLE scientific_data."LIGHTSHEET_CONFIGS"
+COMMENT ON TABLE scientific_data."lightsheet_configs"
     IS 'Contains objects which each represent a particular set of hardware and software settings for the begeron lab lightsheet microscope. (i.e a "config". )';
 
-CREATE TABLE scientific_data."SAMPLES"
+CREATE TABLE scientific_data."samples"
 (
     "SAMPLE_ID" bigint NOT NULL,
     "ANIMAL_ID" bigint NOT NULL,
@@ -65,10 +65,10 @@ CREATE TABLE scientific_data."SAMPLES"
     PRIMARY KEY ("SAMPLE_ID")
 );
 
-COMMENT ON TABLE scientific_data."SAMPLES"
+COMMENT ON TABLE scientific_data."samples"
     IS 'Contains sample objects.';
 
-CREATE TABLE scientific_data."SAMPLE_PREP_PROTOCOLS"
+CREATE TABLE scientific_data."sample_prep_protocols"
 (
     "SAMPLE_PREP_PROTOCOL_ID" bigint NOT NULL,
     "RESEARCHER_ID" bigint NOT NULL,
@@ -76,10 +76,10 @@ CREATE TABLE scientific_data."SAMPLE_PREP_PROTOCOLS"
     PRIMARY KEY ("SAMPLE_PREP_PROTOCOL_ID")
 );
 
-COMMENT ON TABLE scientific_data."SAMPLE_PREP_PROTOCOLS"
+COMMENT ON TABLE scientific_data."sample_prep_protocols"
     IS 'Contains all info relating to every protocol that was ever used in the lab.';
 
-CREATE TABLE scientific_data."ANIMALS"
+CREATE TABLE scientific_data."animals"
 (
     "ANIMAL_ID" bigint NOT NULL,
     "ANIMAL_FATHER_ID" bigint,
@@ -92,10 +92,10 @@ CREATE TABLE scientific_data."ANIMALS"
     PRIMARY KEY ("ANIMAL_ID")
 );
 
-COMMENT ON TABLE scientific_data."ANIMALS"
+COMMENT ON TABLE scientific_data."animals"
     IS 'Each record is a complete profile for every animal that''s ever passed through the lab.';
 
-CREATE TABLE scientific_data."RESEARCHERS"
+CREATE TABLE scientific_data."researchers"
 (
     "RESEARCHER_ID" bigint NOT NULL,
     "FIRST_NAME" character varying NOT NULL,
@@ -105,54 +105,54 @@ CREATE TABLE scientific_data."RESEARCHERS"
     PRIMARY KEY ("RESEARCHER_ID")
 );
 
-COMMENT ON TABLE scientific_data."RESEARCHERS"
+COMMENT ON TABLE scientific_data."researchers"
     IS 'Each record is a complete profile for every researcher that''s ever been part of the lab.';
 
-ALTER TABLE scientific_data."LIGHTSHEET_SCANS"
+ALTER TABLE scientific_data."lightsheet_scans"
     ADD FOREIGN KEY ("SAMPLE_ID")
-    REFERENCES scientific_data."SAMPLES" ("SAMPLE_ID")
+    REFERENCES scientific_data."samples" ("SAMPLE_ID")
     NOT VALID;
 
 
-ALTER TABLE scientific_data."SAMPLES"
+ALTER TABLE scientific_data."samples"
     ADD FOREIGN KEY ("SAMPLE_PREP_PROTOCOL_ID")
-    REFERENCES scientific_data."SAMPLE_PREP_PROTOCOLS" ("SAMPLE_PREP_PROTOCOL_ID")
+    REFERENCES scientific_data."sample_prep_protocols" ("SAMPLE_PREP_PROTOCOL_ID")
     NOT VALID;
 
 
-ALTER TABLE scientific_data."LIGHTSHEET_SCANS"
+ALTER TABLE scientific_data."lightsheet_scans"
     ADD FOREIGN KEY ("LIGHTSHEET_CONFIG_ID")
-    REFERENCES scientific_data."LIGHTSHEET_CONFIGS" ("LIGHTSHEET_CONFIG_ID")
+    REFERENCES scientific_data."lightsheet_configs" ("LIGHTSHEET_CONFIG_ID")
     NOT VALID;
 
 
-ALTER TABLE scientific_data."LIGHTSHEET_SCANS"
+ALTER TABLE scientific_data."lightsheet_scans"
     ADD FOREIGN KEY ("RESEARCHER_ID")
-    REFERENCES scientific_data."RESEARCHERS" ("RESEARCHER_ID")
+    REFERENCES scientific_data."researchers" ("RESEARCHER_ID")
     NOT VALID;
 
 
-ALTER TABLE scientific_data."LIGHTSHEET_CONFIGS"
+ALTER TABLE scientific_data."lightsheet_configs"
     ADD FOREIGN KEY ("RESEARCHER_ID")
-    REFERENCES scientific_data."RESEARCHERS" ("RESEARCHER_ID")
+    REFERENCES scientific_data."researchers" ("RESEARCHER_ID")
     NOT VALID;
 
 
-ALTER TABLE scientific_data."SAMPLES"
+ALTER TABLE scientific_data."samples"
     ADD FOREIGN KEY ("ANIMAL_ID")
-    REFERENCES scientific_data."ANIMALS" ("ANIMAL_ID")
+    REFERENCES scientific_data."animals" ("ANIMAL_ID")
     NOT VALID;
 
 
-ALTER TABLE scientific_data."SAMPLES"
+ALTER TABLE scientific_data."samples"
     ADD FOREIGN KEY ("RESEARCHER_ID")
-    REFERENCES scientific_data."RESEARCHERS" ("RESEARCHER_ID")
+    REFERENCES scientific_data."researchers" ("RESEARCHER_ID")
     NOT VALID;
 
 
-ALTER TABLE scientific_data."SAMPLE_PREP_PROTOCOLS"
+ALTER TABLE scientific_data."sample_prep_protocols"
     ADD FOREIGN KEY ("RESEARCHER_ID")
-    REFERENCES scientific_data."RESEARCHERS" ("RESEARCHER_ID")
+    REFERENCES scientific_data."researchers" ("RESEARCHER_ID")
     NOT VALID;
 
 END;
